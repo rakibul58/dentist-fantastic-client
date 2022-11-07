@@ -8,7 +8,7 @@ import router from './Router/Routes/Routes';
 
 function App() {
   return (
-    <div>
+    <div className='max-w-screen-xl mx-auto'>
       {/* <Helmet>
         <title>My Home</title>
         <meta name="description" content="Helmet application" />
