@@ -1,9 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home</h1>
+            <Helmet>
+                <title>Home</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
         </div>
     );
 };
