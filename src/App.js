@@ -2,6 +2,8 @@
 import './App.css';
 // import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { RouterProvider } from 'react-router-dom';
+import router from './Router/Routes/Routes';
 // import logo from './assets/images/logo/dentist_logo.jpg'
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
           <img style={{width: '100px'}} src={logo} alt="" />
         </PhotoView>
       </PhotoProvider> */}
-      <h1 className='text-2xl font-bold text-pink-300'>Hello world</h1>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }
