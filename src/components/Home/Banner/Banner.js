@@ -11,12 +11,12 @@ const Banner = () => {
                     <h1 className="text-4xl font-bold leading-none sm:text-5xl">Welcome to<span>{" "}</span>
                         <span className="text-red-600">Dentist Fantastic</span>
                     </h1>
-                    <p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
-                        <br className="hidden md:inline lg:hidden"/>turpis pulvinar, est scelerisque ligula sem
+                    <p className="mt-6 mb-8 text-lg sm:mb-12">Get the care you need today
+                        <br className="hidden md:inline lg:hidden"/>Bringing You the highest quality of dental care
                     </p>
                     <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-                        <Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold bg-red-600 text-gray-50 rounded-full hover:bg-transparent hover:border hover:border-red-600 hover:text-red-600">Login</Link>
-                        <Link rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-full">Courses</Link>
+                        <Link rel="noopener noreferrer" to='/login' className="px-8 py-3 text-lg font-semibold bg-red-600 text-gray-50 rounded-full hover:bg-transparent hover:border hover:border-red-600 hover:text-red-600">Login</Link>
+                        <Link rel="noopener noreferrer" to='/services' className="px-8 py-3 text-lg font-semibold border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-full">Services</Link>
                     </div>
                 </div>
                 <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-full sm:h-80 lg:h-96 xl:h-112 2xl:h-128">

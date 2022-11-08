@@ -5,7 +5,7 @@ import logo from '../../assets/images/logo/logo.png'
 const Header = () => {
     const navItems = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/login'>Blog</NavLink></li>
+        <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to=''>Blog</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">
@@ -16,8 +16,8 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-lg font-semibold">
                         {navItems}
-                        <li><Link className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Login</Link></li>
-                        <li><Link className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link></li>
+                        <li><Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Login</Link></li>
+                        <li><Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link></li>
                     </ul>
                 </div>
                 <img className='w-1/6' src={logo} alt="" />
@@ -31,8 +31,8 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end hidden lg:flex">
-                <Link className="btn btn-outline btn-error normal-case rounded-full px-8 mr-2">Login</Link>
-                <Link className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link>
+                <Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 mr-2">Login</Link>
+                <Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link>
             </div>
         </div>
     );
