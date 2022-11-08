@@ -29,7 +29,7 @@ const GetUpdate = () => {
                         </p>
                     </div>
                 </div>
-                <form novalidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
+                <form noValidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
                     <label className="block">
                         <span className="mb-5">Full name</span>
                         <input type="text" placeholder="Your Name" className="mt-3 block w-full rounded-full shadow-2xl focus:ring focus:ring-opacity-75 focus:ring-red-600 text-white pl-4 bg-gray-900 bg-opacity-50 py-4" />
