@@ -6,6 +6,7 @@ import img1 from '../../../assets/images/banner/1.jpg';
 const Banner = () => {
     return (
         <section className="bg-gray-100 text-gray-800">
+            {/* Banner Info */}
             <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                 <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                     <h1 className="text-4xl font-bold leading-none sm:text-5xl">Welcome to<span>{" "}</span>
@@ -19,6 +20,7 @@ const Banner = () => {
                         <Link rel="noopener noreferrer" to='/services' className="px-8 py-3 text-lg font-semibold border border-red-600 text-red-600 hover:bg-red-600 hover:text-white rounded-full">Services</Link>
                     </div>
                 </div>
+                {/* Banner Image */}
                 <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-full sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                     <img src={img1} alt="" className="object-contain h-72 sm:h-80 lg:h-fit xl:h-112 2xl:h-128 rounded-3xl" />
                 </div>

@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/logo/logo.png'
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+    //Nav links
     const navItems = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to=''>Blog</NavLink></li>
+        <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/blog'>Blog</NavLink></li>
+        {
+            user && <>
+                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/addService'>Add Services</NavLink></li>
+            </>
+        }
     </>
+
+    const navButtons = <>
+        <li><Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 lg:mr-2">Login</Link></li>
+        <li><Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link></li>
+    </>
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -16,11 +30,18 @@ const Header = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-lg font-semibold">
                         {navItems}
-                        <li><Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Login</Link></li>
-                        <li><Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link></li>
+                        {/* for collapsed navbar */}
+                        {user ? <>
+                            <li>
+                                <button className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Logout</button>
+                            </li>
+                        </>
+                            : { navButtons }}
                     </ul>
                 </div>
+                {/* Nav Logo */}
                 <img className='w-1/6' src={logo} alt="" />
+                {/* Nav Title */}
                 <Link className="btn btn-ghost normal-case text-xl text-error font-bold">
                     Dentist Fantastic
                 </Link>
@@ -30,9 +51,16 @@ const Header = () => {
                     {navItems}
                 </ul>
             </div>
+            {/* For Laptop view */}
             <div className="navbar-end hidden lg:flex">
-                <Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 mr-2">Login</Link>
-                <Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link>
+                <ul className='menu menu-horizontal'>
+                    {user ? <>
+                        <li>
+                            <button className="btn btn-outline btn-error normal-case rounded-full px-8">Logout</button>
+                        </li>
+                    </>
+                        : { navButtons }}
+                </ul>
             </div>
         </div>
     );
