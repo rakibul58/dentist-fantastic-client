@@ -1,0 +1,6 @@
+.getUpdate{
+    background-image: url('../../../assets/images/banner/3.jpg');
+    background-position: center center; 
+    background-blend-mode: multiply; 
+    background-size: cover;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Banner from '../Banner/Banner';
+import Feature from '../Feature/Feature';
+import GetUpdate from '../GetUpdate/GetUpdate';
 import MyServices from '../MyServices/MyServices';
 
 
@@ -15,7 +17,8 @@ const Home = () => {
                 {/* Banner Component */}
                 <Banner></Banner>
                 <MyServices></MyServices>
-          
+                <Feature></Feature>
+                <GetUpdate></GetUpdate>
         </div>
     );
 };
