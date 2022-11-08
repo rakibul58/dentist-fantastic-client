@@ -20,7 +20,7 @@ const Header = () => {
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/blog'>Blog</NavLink></li>
         {
             user && <>
-                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/addService'>Add Services</NavLink></li>
+                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/addServices'>Add Services</NavLink></li>
             </>
         }
     </>
@@ -51,7 +51,7 @@ const Header = () => {
                 {/* Nav Logo */}
                 <img className='w-1/6' src={logo} alt="" />
                 {/* Nav Title */}
-                <Link className="btn btn-ghost normal-case text-xl text-error font-bold">
+                <Link to='/' className="btn btn-ghost normal-case text-xl text-error font-bold">
                     Dentist Fantastic
                 </Link>
             </div>
