@@ -48,7 +48,7 @@ const Register = () => {
                 <title>Register</title>
                 <meta name="description" content="Dentist Service" />
             </Helmet>
-            <div className="flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-50 text-gray-800 mx-auto mb-16 mt-4">
+            <div className="shadow-xl flex flex-col max-w-md p-6 rounded-3xl sm:p-10 bg-gray-50 text-gray-800 mx-auto mb-16 mt-4">
                 <div className="mb-8 text-center">
                     <h1 className="my-3 text-4xl font-bold text-error">Register</h1>
                     <p className="text-sm text-gray-600">Register to create an account</p>
