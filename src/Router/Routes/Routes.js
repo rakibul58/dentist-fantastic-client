@@ -26,11 +26,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addServices',
-                element: <AddServices></AddServices>
+                element: <PrivateRoute></PrivateRoute>
             },
             {
                 path: '/blog',
-                element: <PrivateRoute><Blog></Blog></PrivateRoute>
+                element: <Blog></Blog>
             }
         ]
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Banner from '../Banner/Banner';
+import MyServices from '../MyServices/MyServices';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                 </Helmet>
                 {/* Banner Component */}
                 <Banner></Banner>
+                <MyServices></MyServices>
           
         </div>
     );

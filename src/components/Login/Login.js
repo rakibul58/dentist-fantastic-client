@@ -10,7 +10,7 @@ const Login = () => {
     const location = useLocation();
 
 
-    //getting location from private route
+    //getting old location
     const from = location.state?.from?.pathname || "/";
 
     
