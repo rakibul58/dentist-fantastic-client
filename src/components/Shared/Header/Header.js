@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/images/logo/logo.png'
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import logo from '../../../assets/images/logo/logo.png'
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+
 
 const Header = () => {
-    const { user , logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     // logout
     console.log(user);
@@ -42,10 +43,13 @@ const Header = () => {
                         {/* for collapsed navbar */}
                         {user ? <>
                             <li>
+                                <img title={user?.displayName ? user?.displayName : user?.email} alt="" className="my-auto mb-4 w-16 h-16 ring-1 ring-error rounded-full" src={user?.photoURL} />
+                            </li>
+                            <li>
                                 <button className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Logout</button>
                             </li>
                         </>
-                            :  navButtons }
+                            : navButtons}
                     </ul>
                 </div>
                 {/* Nav Logo */}
@@ -65,10 +69,13 @@ const Header = () => {
                 <ul className='menu menu-horizontal'>
                     {user ? <>
                         <li>
-                            <button onClick={handleLogOut} className="btn btn-outline btn-error normal-case rounded-full px-8">Logout</button>
+                            <img title={user?.displayName ? user?.displayName : user?.email} alt="" className="my-auto mr-4 w-16 h-16 ring-1 ring-error rounded-full" src={user?.photoURL} />
+                        </li>
+                        <li>
+                            <button onClick={handleLogOut} className="my-auto btn btn-outline btn-error normal-case rounded-full px-8">Logout</button>
                         </li>
                     </>
-                        :  navButtons }
+                        : navButtons}
                 </ul>
             </div>
         </div>

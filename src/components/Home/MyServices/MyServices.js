@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ServiceCard from '../../../Shared/ServiceCard/ServiceCard';
+import ServiceCard from '../../Shared/ServiceCard/ServiceCard';
 
 const MyServices = () => {
     const [service, setServices] = useState([]);
