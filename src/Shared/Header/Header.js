@@ -4,7 +4,16 @@ import logo from '../../assets/images/logo/logo.png'
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user , logOut} = useContext(AuthContext);
+
+    // logout
+    console.log(user);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error));
+    }
+
     //Nav links
     const navItems = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/'>Home</NavLink></li>
@@ -18,7 +27,7 @@ const Header = () => {
 
     const navButtons = <>
         <li><Link to='/login' className="btn btn-outline btn-error normal-case rounded-full px-8 lg:mr-2">Login</Link></li>
-        <li><Link to='/register' className="btn btn-error hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8">Register</Link></li>
+        <li><Link to='/register' className="btn btn-error text-white hover:bg-transparent hover:text-red-600 normal-case rounded-full px-8 mt-2 lg:mt-0">Register</Link></li>
     </>
 
     return (
@@ -36,7 +45,7 @@ const Header = () => {
                                 <button className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Logout</button>
                             </li>
                         </>
-                            : { navButtons }}
+                            :  navButtons }
                     </ul>
                 </div>
                 {/* Nav Logo */}
@@ -56,10 +65,10 @@ const Header = () => {
                 <ul className='menu menu-horizontal'>
                     {user ? <>
                         <li>
-                            <button className="btn btn-outline btn-error normal-case rounded-full px-8">Logout</button>
+                            <button onClick={handleLogOut} className="btn btn-outline btn-error normal-case rounded-full px-8">Logout</button>
                         </li>
                     </>
-                        : { navButtons }}
+                        :  navButtons }
                 </ul>
             </div>
         </div>
