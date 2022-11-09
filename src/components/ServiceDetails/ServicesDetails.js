@@ -1,11 +1,74 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const ServicesDetails = () => {
+    // shows the services details and comments in this component
     const serviceData = useLoaderData();
-    const { image, service, price, description } = serviceData;
+    const { user } = useContext(AuthContext);
+    const { _id, image, service, price, description } = serviceData;
+
+    const [oldComment , setOldComment] = useState([]);
+
+    //toast
+    const notify = () => toast.success('Review Added Successfully');
+
+    // posting comment
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const review = form.review.value;
+        const time = new Date().toLocaleString() + "";
+
+        const comment = {
+            reviewer: user?.displayName,
+            email: user?.email,
+            serviceId: _id,
+            photoURL: user?.photoURL,
+            service,
+            review,
+            time
+        }
+
+        fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(comment)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    notify();
+                    form.reset();
+                    const newComment = [...oldComment , comment]
+                    setOldComment(newComment);
+                }
+            })
+            .catch(err => console.error(err));
+    }
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/comments/${_id}`)
+        .then(res => res.json())
+        .then(data => setOldComment(data));
+    },[_id]);
+
+    oldComment.sort((a, b)=> a.time.localeCompare(b.time));
+    oldComment.reverse();
+    
+
     return (
         <div className='px-10'>
+            <Helmet>
+                <title>
+                    Service Details
+                </title>
+            </Helmet>
             <div className="max-w-full rounded-3xl shadow-xl bg-gray-50 text-secondary flex flex-wrap my-20">
                 <div className='lg:w-1/3 w-full'>
                     <img src={image} alt="" className="object-cover object-center h-full w-full rounded-l-3xl bg-gray-500" />
@@ -17,6 +80,31 @@ const ServicesDetails = () => {
                     </div>
                     <p className='text-info font-bold text-xl'>Price: {price}$</p>
                 </div>
+            </div>
+            {/* Reviews */}
+            <div className="divider font-bold text-error text-lg">Reviews</div>
+            <div>
+                {
+                    user ? <>
+                        <form onSubmit={handleSubmit} className="col-span-full">
+                            <textarea rows='3' id="address" name='review' type="text" placeholder="Comment" className="w-full rounded-3xl focus:ring focus:ring-opacity-75 focus:ring-red-600 bg-gray-100 border border-gray-300 text-gray-900 mt-2 pl-4 bg-opacity-80 pt-3" required />
+                            <input type='submit' className='btn font-bold mt-4 mb-12 px-12 rounded-full btn-error hover:bg-info' value='Post'/>
+                        </form>
+                    </>
+                        :
+                        <>
+                            <h1 className='text-center text-gray-900 font-semibold text-xl my-12'>
+                                Please <Link className='font-bold text-error' to='/login'>Login</Link> to add an review
+                            </h1>
+                        </>
+                }
+            </div>
+            {/* comments */}
+            <div>
+                <h1 className='text-3xl text-error'>{oldComment.length} Reviews Added</h1>
+                {
+                    oldComment.map(com => <p>{com.time}</p>)
+                }
             </div>
         </div>
     );

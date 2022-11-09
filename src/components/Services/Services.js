@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 
 const Services = () => {
+    //All service page
     const services = useLoaderData();
     return (
         <div className='mb-32'>

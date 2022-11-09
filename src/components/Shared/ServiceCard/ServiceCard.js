@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
+    //shows the individual cards
     const { _id, image, description, price } = service;
     return (
         <div className="max-w-xs rounded-3xl shadow-md bg-gray-50 text-gray-800">

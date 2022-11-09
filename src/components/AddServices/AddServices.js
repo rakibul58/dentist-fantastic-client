@@ -8,12 +8,17 @@ const AddServices = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [image , setImage] = useState('');
+    //toast
     const notify = () => toast.success('Service Added Successfully');
+
+    //sets image beside the form
     const handleBlur = event =>{
         event.preventDefault();
         const imageURL = event.target.value;
         setImage(imageURL);
     }
+
+    //sends new service to database
     const handleSubmit = event =>{
         event.preventDefault();
         const form  = event.target;
@@ -42,6 +47,7 @@ const AddServices = () => {
             if(data.acknowledged){
                 notify();
                 form.reset();
+                //navigate to all services
                 navigate('/services');
             }
         })
