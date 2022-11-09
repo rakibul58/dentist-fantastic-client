@@ -47,7 +47,7 @@ const Header = () => {
                                 <img title={user?.displayName ? user?.displayName : user?.email} alt="" className="my-auto mb-4 w-16 h-16 ring-1 ring-error rounded-full" src={user?.photoURL} />
                             </li>
                             <li>
-                                <button className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Logout</button>
+                                <button onClick={handleLogOut} className="btn btn-outline btn-error normal-case rounded-full px-8 mb-2">Logout</button>
                             </li>
                         </>
                             : navButtons}
