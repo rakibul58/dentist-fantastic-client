@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import img from '../../../assets/images/banner/2.jpg';
 
 const Feature = () => {
@@ -36,7 +37,11 @@ const Feature = () => {
                 </div>
                 <div className="lg:w-1/2 xl:w-3/5 bg-gray-100">
                     <div className="flex items-center justify-center p-4 md:p-8 lg:p-12">
-                        <img src={img} alt="" className="rounded-3xl shadow-lg bg-gray-500 aspect-video sm:min-h-96" />
+                        <PhotoProvider>
+                            <PhotoView src={img}>
+                                <img src={img} alt="" className="rounded-3xl shadow-lg bg-gray-500 aspect-video sm:min-h-96" />
+                            </PhotoView>
+                        </PhotoProvider>
                     </div>
                 </div>
             </div>
