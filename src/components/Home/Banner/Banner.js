@@ -17,7 +17,7 @@ const Banner = () => {
                     </p>
                     <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
                         <Link rel="noopener noreferrer" to='/login' className="px-8 py-3 text-lg font-semibold bg-red-600 text-gray-50 rounded-full hover:bg-info">Login</Link>
-                        <Link rel="noopener noreferrer" to='/services' className="px-8 py-3 text-lg font-semibold border border-red-600 bg-black bg-opacity-40 text-red-600 hover:bg-opacity-50 rounded-full">Services</Link>
+                        <Link rel="noopener noreferrer" to='/services' className="px-8 py-3 text-lg font-semibold border border-red-600 bg-black bg-opacity-40 text-red-600 hover:bg-opacity-80 rounded-full">Services</Link>
                     </div>
                 </div>
                 {/* Banner Image */}
