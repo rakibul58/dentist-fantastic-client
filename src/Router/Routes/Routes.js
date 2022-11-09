@@ -27,7 +27,7 @@ const router = createBrowserRouter([
                 element: <Register></Register>,
             },
             {
-                path: '/addServices',
+                path: '/addservice',
                 element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
             {

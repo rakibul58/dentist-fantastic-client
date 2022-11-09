@@ -21,7 +21,8 @@ const Header = () => {
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/blog'>Blog</NavLink></li>
         {
             user && <>
-                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/addServices'>Add Services</NavLink></li>
+                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/addservice'>Add Service</NavLink></li>
+                <li><NavLink className={({ isActive }) => (isActive ? 'text-error' : '')} to='/myreviews'>My Reviews</NavLink></li>
             </>
         }
     </>
