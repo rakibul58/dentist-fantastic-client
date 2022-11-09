@@ -5,7 +5,6 @@ import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 
 const Services = () => {
     const services = useLoaderData();
-    const {_id} = services;
     return (
         <div className='mb-32'>
             <Helmet>

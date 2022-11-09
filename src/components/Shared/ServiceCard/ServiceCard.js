@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StarIcon } from '@heroicons/react/24/solid';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
@@ -20,7 +19,7 @@ const ServiceCard = ({ service }) => {
                 <div className='flex justify-start'>
                     <span className='font-bold text-warning'>Price: {price}$</span>
                 </div>
-                <Link to={`/services/${_id}`}><button type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-full bg-error text-gray-100 hover:bg-info">View Details</button></Link>
+                <Link to={`/services/${_id}`}><button type="button" className="flex items-end justify-center w-full p-3 font-semibold tracking-wide rounded-full bg-error text-gray-100 hover:bg-info">View Details</button></Link>
             </div>
         </div>
     );

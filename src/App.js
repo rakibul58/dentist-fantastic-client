@@ -4,6 +4,7 @@ import './App.css';
 import 'react-photo-view/dist/react-photo-view.css';
 import { RouterProvider } from 'react-router-dom';
 import router from './Router/Routes/Routes';
+import { Toaster } from 'react-hot-toast';
 // import logo from './assets/images/logo/dentist_logo.jpg'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         </PhotoView>
       </PhotoProvider> */}
       <RouterProvider router={router}></RouterProvider>
+      <Toaster/>
     </div>
   );
 }

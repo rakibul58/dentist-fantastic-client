@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const AddServices = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [image , setImage] = useState('');
+    const notify = () => toast.success('Service Added Successfully');
     const handleBlur = event =>{
         event.preventDefault();
         const imageURL = event.target.value;
@@ -33,7 +37,14 @@ const AddServices = () => {
             body: JSON.stringify(order)
         })
         .then(res=>res.json())
-        .then(data=>{console.log(data);})
+        .then(data=>{
+            console.log(data);
+            if(data.acknowledged){
+                notify();
+                form.reset();
+                navigate('/services');
+            }
+        })
         .catch(err=>console.error(err));
     }
     return (
