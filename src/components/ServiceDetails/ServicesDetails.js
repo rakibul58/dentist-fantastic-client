@@ -30,7 +30,8 @@ const ServicesDetails = () => {
             photoURL: user?.photoURL,
             service,
             review,
-            time
+            time,
+            sort_id: oldComment.length
         }
 
         fetch('http://localhost:5000/comments', {
@@ -50,10 +51,6 @@ const ServicesDetails = () => {
                     // const sortedDates = newComment?.map(obj => { return { ...obj, time: new Date(obj.time) } })
                     //     .sort((a, b) => b.time - a.time)
                     // console.log(sortedDates);
-                    newComment.sort(function(a, b) {
-                        return (a._id - b._id);
-                    });
-                    newComment.reverse();
                     setOldComment(newComment);
 
                 }
@@ -61,12 +58,12 @@ const ServicesDetails = () => {
             .catch(err => console.error(err));
     }
 
+
     useEffect(() => {
         fetch(`http://localhost:5000/comments/${_id}`)
             .then(res => res.json())
             .then(data => setOldComment(data));
-    }, [_id]);
-
+    }, [_id , oldComment]);
 
 
     // console.log(oldComment)
