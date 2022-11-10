@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Review from './Review';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
 
     const notifyDelete = () => toast.success('Review Deleted Successfully');
@@ -13,10 +13,21 @@ const MyReviews = () => {
 
     //review loading
     useEffect(() => {
-        fetch(`http://localhost:5000/comments?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setReviews(data));
-    }, [user?.email, reviews]);
+        fetch(`http://localhost:5000/comments?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
+            .then(data => {
+                setReviews(data)
+            });
+    }, [user?.email, reviews, logOut]);
 
     // delete comment
     const handleDelete = id => {

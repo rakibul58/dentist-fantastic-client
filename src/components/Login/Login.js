@@ -71,8 +71,27 @@ const Login = () => {
                 console.log(user);
                 setError('');
 
-                //navigate to old location
-                navigate(from, { replace: true });
+                const currentUser = {
+                    email: user?.email
+                }
+
+                //get token
+                fetch(`http://localhost:5000/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token);
+                        // navigate to old page
+                        navigate(from, { replace: true });
+                    })
+                    .catch(err => console.error(err));
+
             })
             .catch(error => {
                 console.error(error);
