@@ -1,12 +1,12 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useLocation, useNavigate} from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn , providerLogin } = useContext(AuthContext);
+    const { signIn, providerLogin } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -14,7 +14,7 @@ const Login = () => {
     //getting old location
     const from = location.state?.from?.pathname || "/";
 
-    
+
 
     // login with email and password
     const handleSubmit = event => {
@@ -31,7 +31,29 @@ const Login = () => {
                 console.log(user);
                 form.reset();
                 setError('');
-                navigate(from, { replace: true });
+
+                const currentUser = {
+                    email: user?.email
+                }
+
+                //get token
+                fetch(`http://localhost:5000/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token);
+                        // navigate to old page
+                        navigate(from, { replace: true });
+                    })
+                    .catch(err => console.error(err));
+
+
             })
             .catch(error => {
                 console.error(error);
@@ -48,6 +70,8 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
+
+                //navigate to old location
                 navigate(from, { replace: true });
             })
             .catch(error => {
