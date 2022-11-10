@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import toast from 'react-hot-toast';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Comment from './Comment';
@@ -63,7 +64,7 @@ const ServicesDetails = () => {
         fetch(`http://localhost:5000/comments/${_id}`)
             .then(res => res.json())
             .then(data => setOldComment(data));
-    }, [_id , oldComment]);
+    }, [_id, oldComment]);
 
 
     // console.log(oldComment)
@@ -76,7 +77,12 @@ const ServicesDetails = () => {
             </Helmet>
             <div className="max-w-full rounded-3xl shadow-xl bg-gray-50 text-secondary flex flex-wrap my-20">
                 <div className='lg:w-1/3 w-full'>
-                    <img src={image} alt="" className="object-cover object-center h-full w-full rounded-l-3xl bg-gray-500" />
+                    <PhotoProvider>
+                        <PhotoView src={image}>
+                            <img src={image} alt="" className="object-cover object-center h-full w-full rounded-l-3xl bg-gray-500" />
+                        </PhotoView>
+                    </PhotoProvider>
+
                 </div>
                 <div className="lg:w-2/3 flex flex-col justify-between pl-8 pr-6 py-8 space-y-8">
                     <div className="space-y-2">
