@@ -35,7 +35,7 @@ const ServicesDetails = () => {
             sort_id: oldComment.length
         }
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://dentist-fantastic-server.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -61,7 +61,7 @@ const ServicesDetails = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/comments/${_id}`)
+        fetch(`https://dentist-fantastic-server.vercel.app/comments/${_id}`)
             .then(res => res.json())
             .then(data => setOldComment(data));
     }, [_id, oldComment]);

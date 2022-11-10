@@ -5,7 +5,7 @@ import ServiceCard from '../../Shared/ServiceCard/ServiceCard';
 const MyServices = () => {
     const [service, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services?length=3')
+        fetch('https://dentist-fantastic-server.vercel.app/services?length=3')
             .then(res => res.json())
             .then(data => setServices(data));
     }, []);

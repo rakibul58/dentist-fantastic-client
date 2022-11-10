@@ -13,7 +13,7 @@ const MyReviews = () => {
 
     //review loading
     useEffect(() => {
-        fetch(`http://localhost:5000/comments?email=${user?.email}`, {
+        fetch(`https://dentist-fantastic-server.vercel.app/comments?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -33,7 +33,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const proceed = window.confirm("Are You sure you want to delete?");
         if (proceed) {
-            fetch(`http://localhost:5000/comments/${id}`, {
+            fetch(`https://dentist-fantastic-server.vercel.app/comments/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -56,7 +56,7 @@ const MyReviews = () => {
             newTime
         }
         console.log(newReviewElement)
-        fetch(`http://localhost:5000/comments/${id}`, {
+        fetch(`https://dentist-fantastic-server.vercel.app/comments/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

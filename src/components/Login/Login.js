@@ -37,7 +37,7 @@ const Login = () => {
                 }
 
                 //get token
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://dentist-fantastic-server.vercel.app/jwt`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -76,7 +76,7 @@ const Login = () => {
                 }
 
                 //get token
-                fetch(`http://localhost:5000/jwt`, {
+                fetch(`https://dentist-fantastic-server.vercel.app/jwt`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
